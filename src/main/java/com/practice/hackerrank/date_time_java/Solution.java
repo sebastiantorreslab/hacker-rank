@@ -1,9 +1,6 @@
 package com.practice.hackerrank.date_time_java;
 
 import java.text.*;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,17 +29,11 @@ public class Solution {
 
         Date date = new Date(year-base,month-1,day);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-
-
-        System.out.println(date);
-
         if (restriction) {
             calendar.clear();
             calendar.setFirstDayOfWeek(SUNDAY);
 
             calendar.setTime(date);
-
 
             switch (calendar.get(DAY_OF_WEEK)) {
                 case SUNDAY    -> output = "SUNDAY";
