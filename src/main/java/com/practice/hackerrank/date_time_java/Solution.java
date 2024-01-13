@@ -31,18 +31,18 @@ public class Solution {
 
         if (restriction) {
             calendar.clear();
-            calendar.setFirstDayOfWeek(SUNDAY);
+            calendar.setFirstDayOfWeek(Calendar.SUNDAY);
 
             calendar.setTime(date);
 
-            switch (calendar.get(DAY_OF_WEEK)) {
-                case SUNDAY    -> output = "SUNDAY";
-                case MONDAY    -> output = "MONDAY";
-                case TUESDAY   -> output = "TUESDAY";
-                case WEDNESDAY -> output = "WEDNESDAY";
-                case THURSDAY  -> output = "THURSDAY";
-                case FRIDAY    -> output = "FRIDAY";
-                case SATURDAY  -> output = "SATURDAY";
+            switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+                case 1    -> output = "SUNDAY";
+                case 2   -> output = "MONDAY";
+                case 3   -> output = "TUESDAY";
+                case 4 -> output = "WEDNESDAY";
+                case 5  -> output = "THURSDAY";
+                case 6    -> output = "FRIDAY";
+                case 7  -> output = "SATURDAY";
 
             }
 
