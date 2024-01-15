@@ -35,13 +35,14 @@ public class Solution {
                     endIndex = beginIndex + k;
                     String string_sub = s.substring(beginIndex, endIndex);
                     subList.add(string_sub);
-                    subList.sort((o1, o2) -> o1.compareTo(o2));
+
                     beginIndex = ++counter;
 
                 }
             } catch(Exception e) {
 
             }finally{
+                subList.sort((o1, o2) -> o1.compareTo(o2));
                 smallest = subList.get(0);
                 largest = subList.get(subList.size() -1);
             }
