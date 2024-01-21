@@ -16,7 +16,7 @@ public class Solution {
 
         if(constraint){
             if(frequency){
-                response = letterFrequency(a,b);
+                response = letterFrequency(pr_a,pr_b);
             }
         }
         return response ? "Anagrams":"Not Anagrams";
@@ -29,26 +29,28 @@ public class Solution {
         String[] letters_b = b.split("(?!^)");
         Map<String,Integer> frecuencies_a = new HashMap<>();
         Map<String,Integer> frecuencies_b = new HashMap<>();
+        boolean response = false;
+        boolean empy = false;
 
         for (int i = 0 ; i < letters_a.length ;i++) {
             int counter_a = 0;
             int counter_b = 0;
-            for(int j = 0; j < letters_b.length;j++){
 
-                  if(letters_a[i].equals(letters_b[j])){
+
+            for(int j = 0; j < letters_b.length;j++){
+                  if(letters_a[i].equalsIgnoreCase(letters_b[j])){
                       ++counter_a;
                       frecuencies_a.put(letters_a[i],counter_a);
-
                   }
-                if(letters_b[i].equals(letters_a[j])){
+                if(letters_b[i].equalsIgnoreCase(letters_a[j])){
                     ++counter_b;
                     frecuencies_b.put(letters_b[i],counter_b);
-
                 }
-
             }
         }
-      return Arrays.equals(frecuencies_a.values().toArray(), frecuencies_b.values().toArray());
+        empy = frecuencies_a.isEmpty() && frecuencies_b.isEmpty();
+        response = Arrays.equals(frecuencies_a.values().toArray(), frecuencies_b.values().toArray()) && !empy;
+        return response;
     }
 
 
