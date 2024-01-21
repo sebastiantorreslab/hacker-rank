@@ -42,7 +42,7 @@ public class Solution {
             } catch(Exception e) {
 
             }finally{
-                subList.sort((o1, o2) -> o1.compareTo(o2));
+                subList.sort(String::compareTo);
                 smallest = subList.get(0);
                 largest = subList.get(subList.size() -1);
             }
