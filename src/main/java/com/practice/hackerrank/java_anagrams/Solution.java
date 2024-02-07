@@ -36,7 +36,6 @@ public class Solution {
             int counter_a = 0;
             int counter_b = 0;
 
-
             for(int j = 0; j < letters_b.length;j++){
                   if(letters_a[i].equalsIgnoreCase(letters_b[j])){
                       ++counter_a;
