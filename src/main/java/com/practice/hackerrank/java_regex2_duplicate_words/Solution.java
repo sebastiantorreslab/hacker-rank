@@ -1,5 +1,8 @@
 package com.practice.hackerrank.java_regex2_duplicate_words;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Solution {
 
     /*
@@ -7,7 +10,22 @@ public class Solution {
      * */
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+         while(sc.hasNextLine()){
+             String sentence = sc.next();
+             repeatedWord(sentence);
+         }
+
     }
+
+
+    public static void repeatedWord(String entry){
+        String regex =  "\\b(\\w+)(\\s+\\1\\b)+";
+        String[] sentence = entry.split(regex);
+        System.out.println(Arrays.toString(sentence));
+    }
+
+
 
 
 
