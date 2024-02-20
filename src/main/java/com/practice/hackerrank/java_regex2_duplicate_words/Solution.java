@@ -1,39 +1,46 @@
 package com.practice.hackerrank.java_regex2_duplicate_words;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Solution {
 
-    /*
-     In this challenge, we use regular expressions (RegEx) to remove instances of words that are repeated more than once, but retain the first occurrence of any case-insensitive repeated word. For example, the words love and to are repeated in the sentence I love Love to To tO code. Can you complete the code in the editor so it will turn I love Love to To tO code into I love to code?
-     * */
     public static void main(String[] args) {
-
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
         Scanner sc = new Scanner(System.in);
-         while(sc.hasNextLine()){
-             String sentence = sc.next();
-             repeatedWord(sentence);
-         }
+        while (sc.hasNext()) {
+            String pattern = sc.nextLine();
+            if(!pattern.matches("\\d+")){
+                System.out.println(repeatedWords(pattern));
+            }
+
+        }
+        sc.close();
 
     }
 
 
-    public static void repeatedWord(String entry){
-        String regex =  "\\b(\\w+)(\\s+\\1\\b)+";
-        String[] sentence = entry.split(regex);
-        System.out.println(Arrays.toString(sentence));
+    public static String repeatedWords(String entry) {
+        List<String> words = new ArrayList<>();
+        Set<String> repeated = new HashSet<>();
+        String response = "";
+        String[] text = entry.split("\\s+");
+
+        boolean constraint = !entry.isEmpty() && entry.length() <= 100 && !entry.matches("\\d+");
+
+        if (constraint) {
+            for (String s : text) {
+                if (words.stream().map(String::toLowerCase).anyMatch(w -> w.equals(s.toLowerCase()))) {
+                    repeated.add(s);
+                } else {
+                    words.add(s);
+                }
+            }
+            response = String.join(" ", words);
+
+        }
+
+
+        return response;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
