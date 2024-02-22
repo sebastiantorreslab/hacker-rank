@@ -1,5 +1,6 @@
 package com.practice.hackerrank.valid_username_regex;
 
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,20 +24,32 @@ public class Solution {
     * */
 
     public static void main(String[] args) {
-        System.out.println(usernameValidator("Samantha"));
+
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            String text = sc.nextLine();
+            if (!text.matches("\\d+")) {
+                System.out.println(usernameValidator(text));
+            }
+
+        }
+        sc.close();
     }
 
-    public static boolean usernameValidator(String entry){
+    public static String usernameValidator(String entry) {
         boolean constraint = !entry.isEmpty() && entry.length() < 100;
+        Matcher matcher = null;
+        String response = "";
 
-        String regex = "^[A-Za-z]{8,30}$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(entry);
-
-
-
-
-        return matcher.matches();
+        if (constraint) {
+            String regex = "^[A-Za-z]([A-Za-z0-9_]){7,29}$";
+            Pattern pattern = Pattern.compile(regex);
+            matcher = pattern.matcher(entry);
+        }
+        if (matcher != null) {
+            response = matcher.matches() ? "Valid" : "Invalid";
+        }
+        return response;
     }
 
 
