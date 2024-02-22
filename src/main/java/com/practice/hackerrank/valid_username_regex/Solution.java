@@ -37,7 +37,7 @@ public class Solution {
     }
 
     public static String usernameValidator(String entry) {
-        boolean constraint = !entry.isEmpty() && entry.trim().length() < 100;
+        boolean constraint = !entry.isEmpty() && entry.trim().length() < 100 && entry.matches("^\\S+$");
         Matcher matcher = null;
         String response = "";
 
