@@ -37,7 +37,7 @@ public class Solution {
     }
 
     public static String usernameValidator(String entry) {
-        boolean constraint = !entry.isEmpty() && entry.length() < 100;
+        boolean constraint = !entry.isEmpty() && entry.trim().length() < 100;
         Matcher matcher = null;
         String response = "";
 
@@ -45,6 +45,8 @@ public class Solution {
             String regex = "^[A-Za-z]([A-Za-z0-9_]){7,29}$";
             Pattern pattern = Pattern.compile(regex);
             matcher = pattern.matcher(entry);
+        }else{
+            response = "Invalid";
         }
         if (matcher != null) {
             response = matcher.matches() ? "Valid" : "Invalid";
