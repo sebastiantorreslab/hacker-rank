@@ -15,7 +15,6 @@ public class Solution {
 
         }
         sc.close();
-
     }
 
 
@@ -38,8 +37,6 @@ public class Solution {
             response = String.join(" ", words);
 
         }
-
-
         return response;
     }
 }
